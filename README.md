@@ -1,7 +1,7 @@
 # tp-pc-22
 
 ## Récupération des données utiles à la rédaction du compte rendu
-Un programme a été conçu pour et est disponnible dans le dossier `python`. Il suffit simplement d'ouvrir le dossier `python` avec votre terminal 
+Un programme a été conçu pour et est disponible dans le dossier `python`. Il suffit simplement de l'ouvrir avec votre terminal 
 ```
 $ cd python
 $ python3 main.py
