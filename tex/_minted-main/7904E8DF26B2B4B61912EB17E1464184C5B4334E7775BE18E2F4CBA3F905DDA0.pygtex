@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{function}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{a}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{o}{*}\PYG{n}{x}\PYG{p}{)}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{c}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{d}\PYG{p}{)}\PYG{o}{+}\PYG{n}{e}
+
+\PYG{k}{def} \PYG{n+nf}{fp}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+    \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{a}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{o}{*}\PYG{n}{x}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{b}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{c}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{d}\PYG{p}{)}\PYG{o}{+}\PYG{n}{c}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{c}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{d}\PYG{p}{))}
+
+\PYG{k}{def} \PYG{n+nf}{ep}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+    \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{l+m+mf}{6.6}\PYG{o}{*}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{ec}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{):}
+    \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{l+m+mf}{0.0666}\PYG{o}{*}\PYG{p}{(}\PYG{n}{fp}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{e}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZdq{}}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Énergies cinétique, potentielle et mécanique}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path\PYGZus{}data\PYGZus{}libre}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{x\PYGZus{}data}\PYG{p}{,} \PYG{n}{y\PYGZus{}data} \PYG{o}{=} \PYG{n}{exctract\PYGZus{}data}\PYG{p}{(}\PYG{n}{file}\PYG{p}{)}
+    \PYG{n}{xdata}\PYG{p}{,} \PYG{n}{ydata} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{x\PYGZus{}data}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{y\PYGZus{}data}\PYG{p}{)}
+    \PYG{n}{popt}\PYG{p}{,} \PYG{n}{pcov} \PYG{o}{=} \PYG{n}{curve\PYGZus{}fit}\PYG{p}{(}\PYG{n}{function}\PYG{p}{,} \PYG{n}{xdata}\PYG{p}{,} \PYG{n}{ydata}\PYG{p}{)}
+    \PYG{n}{Ec} \PYG{o}{=} \PYG{n}{ec}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{)}
+    \PYG{n}{Ep} \PYG{o}{=} \PYG{n}{ep}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{)}
+    \PYG{n}{Em} \PYG{o}{=} \PYG{n}{Ec} \PYG{o}{+} \PYG{n}{Ep}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{),} \PYG{n}{dpi}\PYG{o}{=}\PYG{l+m+mi}{80}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{n}{Ec}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie cinétique\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{n}{Ep}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}b\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie potentielle\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{n}{Em}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}g\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie mécanique\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Énergie (J)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps (s)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

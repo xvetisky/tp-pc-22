@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{re}
+\PYG{n}{pattern} \PYG{o}{=} \PYG{n}{re}\PYG{o}{.}\PYG{n}{compile}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}?[.0\PYGZhy{}9]*;\PYGZhy{}?[.0\PYGZhy{}9]*\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{split\PYGZus{}token} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{};\PYGZdq{}}
+
+\PYG{k}{def} \PYG{n+nf}{exctract\PYGZus{}data}\PYG{p}{(}\PYG{n}{file}\PYG{p}{):}
+    \PYG{n}{x\PYGZus{}data}\PYG{p}{,} \PYG{n}{y\PYGZus{}data} \PYG{o}{=} \PYG{p}{[],} \PYG{p}{[]}
+    \PYG{k}{for} \PYG{n}{line} \PYG{o+ow}{in} \PYG{n}{file}\PYG{p}{:}
+        \PYG{n}{is\PYGZus{}data} \PYG{o}{=} \PYG{n}{pattern}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{n}{line}\PYG{p}{)}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{is\PYGZus{}data}\PYG{p}{:}
+            \PYG{k}{continue}
+        \PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{line}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{n}{split\PYGZus{}token}\PYG{p}{)}
+        \PYG{n}{x\PYGZus{}data}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{x}\PYG{p}{))}
+        \PYG{n}{y\PYGZus{}data}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{y}\PYG{p}{))}
+    \PYG{k}{return} \PYG{n}{x\PYGZus{}data}\PYG{p}{,} \PYG{n}{y\PYGZus{}data}
+\end{Verbatim}

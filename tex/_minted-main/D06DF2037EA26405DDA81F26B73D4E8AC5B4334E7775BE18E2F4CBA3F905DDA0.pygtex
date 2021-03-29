@@ -1,0 +1,53 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.optimize} \PYG{k+kn}{import} \PYG{n}{curve\PYGZus{}fit}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{utils} \PYG{k+kn}{import} \PYG{n}{exctract\PYGZus{}data}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+
+
+\PYG{n}{path\PYGZus{}data\PYGZus{}libre} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}/Users/mac/documents/prepa/rabelais/physique/TPs/tp\PYGZhy{}pc\PYGZhy{}22/data\PYGZhy{}libre/data\PYGZhy{}y.txt\PYGZdq{}}
+\PYG{n}{path\PYGZus{}data\PYGZus{}force} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}/Users/mac/documents/prepa/rabelais/physique/TPs/tp\PYGZhy{}pc\PYGZhy{}22/data\PYGZhy{}force/data\PYGZhy{}y.txt\PYGZdq{}}
+
+
+\PYG{k}{def} \PYG{n+nf}{function}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n}{a}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{c}\PYG{p}{)}
+
+
+\PYG{k}{def} \PYG{n+nf}{fp}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{):}
+    \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{n}{c}\PYG{p}{)}
+
+
+\PYG{k}{def} \PYG{n+nf}{ep}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{):}
+    \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{l+m+mf}{6.6}\PYG{o}{*}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+
+\PYG{k}{def} \PYG{n+nf}{ec}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{):}
+    \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{l+m+mf}{0.0666}\PYG{o}{*}\PYG{p}{(}\PYG{n}{fp}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZdq{}}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Cas régime forcé}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path\PYGZus{}data\PYGZus{}force}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{x\PYGZus{}data}\PYG{p}{,} \PYG{n}{y\PYGZus{}data} \PYG{o}{=} \PYG{n}{exctract\PYGZus{}data}\PYG{p}{(}\PYG{n}{file}\PYG{p}{)}
+    \PYG{n}{xdata}\PYG{p}{,} \PYG{n}{ydata} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{x\PYGZus{}data}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{y\PYGZus{}data}\PYG{p}{)}
+    \PYG{n}{popt}\PYG{p}{,} \PYG{n}{pcov} \PYG{o}{=} \PYG{n}{curve\PYGZus{}fit}\PYG{p}{(}\PYG{n}{function}\PYG{p}{,} \PYG{n}{xdata}\PYG{p}{,} \PYG{n}{ydata}\PYG{p}{)}
+    \PYG{n}{Ec} \PYG{o}{=} \PYG{n}{ec}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{)}
+    \PYG{n}{Ep} \PYG{o}{=} \PYG{n}{ep}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{)}
+    \PYG{n}{Em} \PYG{o}{=} \PYG{n}{Ep}\PYG{o}{+}\PYG{n}{Ec}
+    \PYG{n}{fig} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{),} \PYG{n}{dpi}\PYG{o}{=}\PYG{l+m+mi}{80}\PYG{p}{)}
+    \PYG{n}{ax1} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{add\PYGZus{}subplot}\PYG{p}{(}\PYG{l+m+mi}{211}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Ec}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}r\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie cinétique\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Ep}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}b\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie potentielle\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax1}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{Em}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}g\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Énergie mécanique\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}temps (s)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Énergie (J)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{ax2} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{add\PYGZus{}subplot}\PYG{p}{(}\PYG{l+m+mi}{212}\PYG{p}{)}
+    \PYG{n}{ax2}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{function}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{),} \PYG{n}{fp}\PYG{p}{(}\PYG{n}{xdata}\PYG{p}{,} \PYG{o}{*}\PYG{n}{popt}\PYG{p}{),} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}b\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Portrait de phase\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Position (m)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Vitesse (m/s)\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

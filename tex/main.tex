@@ -1,0 +1,691 @@
+\documentclass[14pt]{article}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsfonts,amssymb}
+\usepackage{amsmath}
+\usepackage{esint} % package de symboles mathématiques
+\usepackage{esvect}
+\usepackage{color}
+\usepackage{pst-all}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{pst-eucl}
+\usepackage{pst-math}
+\usepackage{chemfig}
+\usepackage{minted}
+\usepackage{tikz, tkz-tab}
+
+
+%\usepackage{helvet}
+%\usepackage{cmbright}
+
+%\usepackage[lmargin=1cm,rmargin=1.5cm,vmargin={3cm,1cm},footskip={1.5cm}]{geometry}
+\usepackage[left=1cm,right=1.2cm,top=2.3cm,bottom=2cm]{geometry}
+% Tikz Libraries
+\usetikzlibrary{calc,patterns,angles,quotes,optics,shapes.geometric}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+%\tikzstyle arrowstyle=[scale=2] %taille des flèches
+
+\usetikzlibrary{arrows,shapes,positioning}
+\tikzstyle arrowstyle=[scale=1] %taille des flèches
+\usetikzlibrary{fadings}
+\tikzset{verre/.style={draw=SkyBlue,fill=SkyBlue!30}}
+\tikzstyle simple=[postaction={decorate,decoration={markings,
+    mark=at position .5 with {\arrow[scale=1,draw=red,>=stealth]{>}}}}]
+\tikzstyle simplerev=[postaction={decorate,decoration={markings,
+    mark=at position .5 with {\arrow[scale=1,draw=red,>=stealth]{<}}}}]
+
+\tikzset{verre/.style={draw=SkyBlue,fill=SkyBlue!30}}
+
+%\input{/home/edouard/maquereau/tabvar}
+
+%\newcommand{\vide}{\varnothing}
+
+%\newcommand{\Acc}
+%{\left\{\begin{array}}
+%	\newcommand{\acC}
+%	{\end{array}\right.}
+
+
+\newcommand{\dint}{\displaystyle\int}
+
+\newcommand{\dsum}{\displaystyle\sum}
+
+
+
+
+%d de l'int\'egrale
+\def \d {\mathrm {d}}
+
+
+
+%\newcommand{\der}[2]{\frac{\d#1}{\d#2}}% df/dx
+%\newcommand{\Der}[2]{\dfrac{\d#1}{\d#2}}% df/dx en grand
+%\newcommand{\dd}{\:\mathrm{d}}% d droit
+%\newcommand{\diag}{\mathrm{diag}}% d droit
+%\newcommand{\Dd}{\mathrm{D}}% D droit
+%\newcommand{\drond}{\partial}% d rond
+%\newcommand{\drp}[2]{\dfrac{\partial#1}{\partial#2}}% d\'eriv\'ees partielles
+%\newcommand{\sdrp}[2]{\frac{\partial#1}{\partial#2}}% d\'eriv\'ees partielles
+%\newcommand{\ddp}[2]{\dfrac{\partial^{2} #1}{\partial #2^{2}}}%derivee partielle 2
+%\newcommand{\sddp}[2]{\tfrac{\partial^{2} #1}{\partial #2^{2}}}%
+%small derivee partielle 2
+%\newcommand{\dpp}[3]{\dfrac{\partial^{2} #1}{\partial #2 \partial #3}}%
+%derivee partielle crois\'ees d'ordre 2
+
+
+
+%DL
+\def \o {\mathrm {o}}
+
+
+
+%Les op\'erateurs
+
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\Min}{Min}
+
+\DeclareMathOperator{\Sup}{Sup}
+\DeclareMathOperator{\Inf}{Inf}
+\DeclareMathOperator{\card}{card}
+\newcommand{\Card}{\mathop{\mathrm{Card}}\nolimits}
+
+%fonctions usuelles
+\newcommand{\cl}[1]{\mathcal{C}^{#1}}% de classe ...
+%\section{fonctions usuelles}
+\newcommand{\Arctan}{\mathop{\mathrm{Arctan}}\nolimits}
+\newcommand{\Arcsin}{\mathop{\mathrm{Arcsin}}\nolimits}
+\newcommand{\Arccos}{\mathop{\mathrm{Arccos}}\nolimits}
+\newcommand{\Argth}{\mathop{\mathrm{Arg\,th}}\nolimits}
+\newcommand{\argth}{\mathop{\mathrm{Arg\,th}}\nolimits}
+\newcommand{\Argsh}{\mathop{\mathrm{Arg\,sh}}\nolimits}
+\newcommand{\argsh}{\mathop{\mathrm{Arg\,sh}}\nolimits}
+\newcommand{\Argch}{\mathop{\mathrm{Arg\,ch}}\nolimits}
+\newcommand{\argch}{\mathop{\mathrm{Arg\,ch}}\nolimits}
+\newcommand{\ch}{\mathop{\mathrm{ch}}\nolimits}
+\newcommand{\sh}{\mathop{\mathrm{sh}}\nolimits}
+\renewcommand{\th}{\mathop{\mathrm{th}}\nolimits}
+\newcommand{\J}{\mathop{\mathrm{j}}\nolimits}
+
+
+
+\newcommand{\Tta}{\Theta}
+\newcommand{\tta}{\theta}
+
+\newcommand{\LL}{{\cal L}}
+\newcommand{\id}{{\rm Id}}
+%\newcommand{\w}{{\cal W}}
+%\newcommand{\V}{{\cal V}}
+\newcommand{\e}{{\rm e}}
+%\newcommand{\h}{{\cal H}}
+\newcommand{\fy}{\varphi}
+\newcommand{\ff}{{\cal F}}
+%\newcommand{\so}{{\cal S}}
+%\newcommand{\s}{\sigma}
+%\newcommand{\te}{\theta}
+%\newcommand{\LB}{{\cal LB}}
+\newcommand{\ppq}{\leqslant}
+\newcommand{\pgq}{\geqslant}
+\newcommand{\al}{\alpha}
+\newcommand{\eps}{\varepsilon}
+%\newcommand{\ii}{{\rm I}}
+
+
+
+%\catcode`\\'e=\active
+%\def\'e{\'e}
+%
+%\catcode`\\`e=\active
+%\def\`e{\`e}
+%
+%\catcode`\\^e=\active
+%\def\^e{\^e}
+%
+%\catcode`\\`a=\active
+%\def\`a{\`a}
+%
+%\catcode`\\^a=\active
+%\def\^a{\^a}
+%
+%\catcode`\\`u=\active
+%\def\`u{\`u}
+%
+%\catcode`\\^o=\active
+%\def\^o{\^o}
+%
+%\catcode`\\^\i =\active
+%\def\^\i {\^i}
+
+
+%alg\`ebre lin\'eaire
+%\DeclareMathOperator{\Ker}{Ker}
+%\DeclareMathOperator{\Det}{Det}
+%\DeclareMathOperator{\rg}{rg}
+%\DeclareMathOperator{\Ima}{Im}
+%\DeclareMathOperator{\vect}{vect}
+%\DeclareMathOperator{\Id}{Id}
+%\DeclareMathOperator{\Mat}{Mat}
+%\DeclareMathOperator{\GL}{GL}
+%\DeclareMathOperator{\SO}{SO}
+%\newcommand{\Sp}{\mathop{\mathrm{Sp}}\nolimits} % spectre
+\def \Tr {\mathrm{tr}}
+%\newcommand{\trans}[1]{{\,}^{t} \! #1}
+
+%Les nouvelles commandes
+
+\def \i {\mathrm {i}}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+
+%\newcommand{\ens}[2]{\left\{#1 \,/\, #2\right\}}
+
+
+
+%\newcommand{\ds}[3]{\displaystyle{\sum_{#1}^{#2}#3}}
+%\newcommand{\dpr}[3]{\displaystyle{\prod_{#1}^{#2}#3}}
+
+%\newcommand{\dl}[3]{\displaystyle{\lim_{#1 \rightarrow #2}#3}}
+
+
+%\newcommand{\ve}[1]{\overrightarrow{#1}}
+%\newcommand{\dintq}[4]{\displaystyle{\int_{#1}^{#2}{#3\,\d#4}}}
+
+%\newcommand{\dintt}[3]{
+%\displaystyle{\int_{#1}^{#2}{ #3}}}
+%\newcommand{\dint}[2]{\displaystyle{\int{#1\,\d#2}}}
+
+
+
+
+
+
+\pagestyle{fancy}
+
+\lhead{\textbf{Amar AHMANE}}
+\chead{\textbf{TP Numéro 22 – Physique}}
+\rhead{\textbf{29-03-2021}}
+
+%\renewcommand{\headrulewidth}{1.5pt}
+%\renewcommand{\headrulewidth}{0pt}
+
+\cfoot{%\textbf{\thepage/3}
+}
+
+
+\rfoot{\textbf{\thepage/7}
+}
+\cfoot{%\textbf{\thepage/4}
+}
+\lfoot{%\textbf{\thepage/3}
+}
+
+
+%\newcounter{toto}
+\begin{document}
+
+    \tikzset{ressort/.style={thick,gray,smooth}}
+    \tikzstyle{cadre}=[rectangle,inner sep=5pt,inner ysep=5pt,draw,thick]% 
+
+  \centerline{\textbf{Oscillateurs en mécanique.}}
+
+  \centerline{Étude expérimentale d'un système \textbf{solide-ressort.}}
+
+  \centerline{Compte rendu du TP.}
+
+
+  \begin{center}
+    $\ast \ast \ast $
+  \end{center}
+
+  \begin{center}
+		\textbf{\Large Introduction}
+	\end{center}
+
+
+	\vspace{4mm}
+
+    Le système qui sera étudié dans le présent TP est un mobile de masse $m=66,9$ g, assimilé au point materiel \textbf{M}, attaché à un ressort sur un support horizontal.
+    Ce dernier sera étudié dans le référentiel lié au plan horizontal sur lequel il se déplace, référentiel terrestre considéré galiliéen pendant la durée du mouvement.
+    Dans le présent TP, nous entreprendrons dans un premier temps une étude théorique, déjà vue en cours, qui servira de base permettant de mener à bien le travail expérimental qui suivera. 
+    En effet, nous disposerons deux fichiers contenant les positions du mobile au cours du temps lors de deux expériences différentes, notre travail consistera à déterminer les constantes du système. Nous prendrons le soin d'expliquer chacune au début de leurs parties respectives.  
+
+    \begin{center}
+		\textbf{\Large Oscillations libres}
+	\end{center}
+    
+    Dans cette partie, comme son nom l'indique, le mobile oscillera librement, et on prendra en compte, dans notre étude théorique, les frottements fluides. 
+
+    \subsection*{Étude théorique}
+
+    Il s'agira d'établir l'équation différentielle décrivant l'évolution de l'allongement du ressort. 
+    Pour cela, nous appliquerons le principe fondamental de la dynamique, mais avant de pouvoir le faire, un bilan des forces s'impose.
+    On finira par la plus caractéristique de ce type de systèmes : la froce de rappel du ressort.
+    \begin{multicols}{2}
+        Le point \textbf{M} est soumis à son poids \(\vv{P}\), force verticale vers le bas, \(\vv{R}\), force verticale vers le haut, parce qu'il n'y a pas de frottemtens avec le plan, les frottements fluides dont la résultante est notée \(\vv{f_{\text{air}}}\) et la force de rappel du ressort \(\vv{F_{\text{rappel}}}\).
+        Par définition, la force de rappel caractérise la raideur du ressort et s'exprime de la manière suivante : \[\boxed{F_{\text{rappel}}=k\times\text{allongement}} \]
+        Le point où est fixé le ressort sera l'origine du repère. Ainsi, l'allongement du ressort est égal à $x-\ell_0$. 
+        En tenant compte du signe de $x-\ell_0$ et de l'expression de la force de rappel, il vient que \(\vv{F_{\text{rappel}}}=-k(x-\ell_0)\vv{e_x}\). 
+        De plus, comme la poistion du mobile n'évoluera que selon l'axe Ox, on peut en déduire que les forces du poids de la réaction du support s'annulent. 
+        On peut alors appliquer le principe fondamental de la dynamique afin d'en déduire l'équation différentielle régissant le mouvement.
+        
+        \columnbreak
+
+        \begin{center}
+            \begin{tikzpicture}[scale=0.8]
+                %\grid{5}{5}  
+        
+            %--------------------ressort central---------------------	
+            \coordinate (O) at (0,-2.75); 
+            \draw [->] (-4.5,-2.75) -- (3,-2.75) ;
+             % \draw [->,-latex] (O) --++ (1.25,0.25) node [above] {$z$} ;
+        
+        
+        
+            %ressort   
+            \begin{scope}[shift=({0,-2.75})]     
+        
+            \begin{scope}[scale=0.75,shift=({-4.78,0.5}),rotate around={90:(0,0)}]
+              %bloc qui tient le ressort
+                \draw[thick,gray] (0,0) -- (0,-0.3); 
+                \fill [pattern=north east lines] (-0.5,0) rectangle (0.5,0.3); 
+                \draw[thick](-0.5,0)--(0.5,0);
+                %fin ressort       
+            \end{scope}	
+        
+        
+             \draw [ressort,decorate,decoration={coil,aspect=0.4,segment length=3mm,amplitude=3mm}] (-3.375,0.36)--++(3,0) ;
+            \draw[rounded corners=4pt,fill=gray!30] (-0.375,0) rectangle++ (0.75,0.75) node [midway, shift=({0,0.05})] {$\centerdot$};  
+        
+             %repérage de \ell
+            \draw [|<->|] (-3.6,1) -- (-0.4,1) node [midway,above] {$\ell_0$};    
+        
+            \end{scope}
+            %--------------------FIN ressort central---------------------	
+        
+        
+            %----------ressort comprimé------------
+            \coordinate (M) at (-1,0.36);
+            \draw (O) --++ (0,0.1) (O) --++ (0,-0.1) node [below right] {O}; 
+            
+        
+            %Axe
+            \draw [->] (-4.5,0) -- (3,0) ;  
+        
+            %repérage de x
+            \draw [|<-] (-1,-1) -- (0,-1) node [midway,below] {\scriptsize  $x-\ell_0<0$};
+        
+            %repérage de \ell
+            \draw [|<->|] (-3.6,1) -- (-1.4,1) node [midway,above] {$x$};
+        
+            \begin{scope}[scale=0.75,shift=({-4.78,0.5}),rotate around={90:(0,0)}]
+              %bloc qui tient le ressort
+                \draw[thick,gray] (0,0) -- (0,-0.3); 
+                \fill [pattern=north east lines] (-0.5,0) rectangle (0.5,0.3); 
+                \draw[thick](-0.5,0)--(0.5,0);
+                %fin ressort       
+            \end{scope}	   
+        
+            %ressort  
+            \draw [ressort,decorate,decoration={coil,aspect=0.3,segment length=1.5mm,amplitude=3mm}] (-3.375,0.36)--++(2,0) ;
+            \draw[rounded corners=4pt,fill=gray!30] (-1.375,0) rectangle++ (0.75,0.75) node [midway, shift=({0,0.05})] {$\centerdot$}; 
+        
+            \draw [->,-stealth,thick,blue] (M) --++(0,-1) node [left] {$\vv{P}$};   
+            \draw [->,-stealth,thick,green!50!black] (M)++(0,-0.35) --++(0,+1) node [right] {$\vv{R}$};   
+            \draw [->,-stealth,thick,red] (M)++(-0.375,0)--++(1.5,0) node [above] {$\vv{F}$};  
+            
+            \draw [->,-stealth,thick,black] (M)++(0.375,0.2)--++(-1,0) node [midway, above left=0.1mm] {\tiny$\vv{f_{\text{air}}}$};   
+            %----------FIN ressort comprimé------------ 
+        
+            %----------ressort etiré------------
+        
+            \begin{scope}[shift=({0,-5.5})]
+        
+            \coordinate (M) at (1,0.36);
+            \draw (O) --++ (0,0.1) (O) --++ (0,-0.1) node [below right] {O}; 
+             
+           
+        
+            %Axe
+            \draw [->] (-4.5,0) -- (3,0) ;  
+        
+            %repérage de x
+            \draw [->|] (0,1.75) -- (1,1.75) node [midway,below] {\scriptsize $x-\ell_0>0$};
+        
+            %repérage de \ell
+            \draw [|<->|] (-3.6,1) -- (0.6,1) node [midway,above] {$x$};
+        
+            \begin{scope}[scale=0.75,shift=({-4.78,0.5}),rotate around={90:(0,0)}]
+              %bloc qui tient le ressort
+                \draw[thick,gray] (0,0) -- (0,-0.3); 
+                \fill [pattern=north east lines] (-0.5,0) rectangle (0.5,0.3); 
+                \draw[thick](-0.5,0)--(0.5,0);
+                %fin ressort       
+            \end{scope}	   
+        
+            %ressort  
+            \draw [ressort,decorate,decoration={coil,aspect=0.5,segment length=5mm,amplitude=3mm}] (-3.375,0.36)--++(4,0) ; 
+        
+             \draw[rounded corners=4pt,fill=gray!30] (0.625,0) rectangle++ (0.75,0.75) node [midway, shift=({0,0.05})] {$\centerdot$}; 
+        
+            \draw [->,-stealth,thick,blue] (M) --++(0,-1) node [right] {$\vv{P}$};   
+            \draw [->,-stealth,thick,green!50!black] (M)++(0,-0.35) --++(0,+1) node [right] {$\vv{R}$};   
+            \draw [->,-stealth,thick,red] (M)++(-0.375,0)--++(-1.5,0) node [above=-1] {$\vv{F}$};	
+            \draw [->,-stealth,thick,black] (M)++(0.375,0.2)--++(-0.8,0) node [midway, above left=0.1mm] {\tiny$\vv{f_{\text{air}}}$};	
+        
+        
+            \end{scope}    
+            %----------FIN ressort etiré------------
+        
+            \draw [dotted] (-1,0) --++(0,-2.75);  
+            \draw [dotted] (1,-2.75) --++(0,-2.75);  
+            \draw [dotted] (0,0) --++(0,-5.5);  
+        
+        
+               \end{tikzpicture} \\
+               \textsc{Figure 1 } – Forces s'exerçant sur la masse accrochée au ressort horizontal.
+        \end{center}
+    \end{multicols}
+
+    L'application du \textbf{PFD} donne : \[m\vv{a}=\vv{P}+\vv{R}+\vv{f_{\text{air}}}+\vv{F}\]
+    L'expression de la force de frottement fluide est $f_{\text{air}}=-\alpha\vv{v}$ où $\vv{v}$ est la vitesse du point \textbf{M}. 
+    Ainsi, en projetant, on obtient la relation :
+    \begin{align*}
+        & m\ddot{x}=-k(x-\ell_0)-\alpha\dot{x}\\
+        \Longleftrightarrow & \boxed{\ddot{x}+\frac{\alpha}{m}\dot{x}+\frac{k}{m}x=\frac{k}{m}\ell_0}
+    \end{align*}		
+    On pose \(\omega_0^2=\frac{k}{m}\), \(\lambda=\frac{\alpha}{2m}\) et \(x_{eq}=\ell_0\). Ainsi, l'équation différentielle s'écrit \[ \ddot{x}+2\lambda\dot{x}+\omega_0^2x=\omega_0^2x_{eq}\tag{E} \]
+    \newpage
+
+    On se place dans le cas d'un régime pseudo-périodique, i.e \(\Delta=4\lambda^2-4\omega_0^2<0\), d'où les deux solutions complexes $r_{1,2}=-\lambda\pm j\sqrt{\omega_0^2-\lambda^2}$.
+    En posant $\omega=\sqrt{\omega_0^2-\lambda^2}$ la pseudo-pulsation, on a trouve une solution $x(t)$ de la forme \[\boxed{x(t)=A\exp(-\lambda t)\cos(\omega t+\phi)+x_{eq}}\]
+
+    \subsection*{Étude expérimentale}
+    On dispose déjà d'un ficher contenant les positions du mobile en fonction du temps. 
+    À l'aide du module python \texttt{scipy.optimize}, on peut retrouver les différentes constantes du problème. 
+    L'utilisation de ce dernier impose de transformer les données en tableaux \texttt{numpy}, afin que les calculs puissent être menés.
+    On crée alors un fichier que l'on nomme \texttt{utils.py}, qui contiendra un programme qui s'en occupera. En voici le code :
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        import re
+        pattern = re.compile("-?[.0-9]*;-?[.0-9]*")
+        split_token = ";"
+
+        def exctract_data(file):
+            x_data, y_data = [], []
+            for line in file:
+                is_data = pattern.match(line)
+                if not is_data:
+                    continue
+                x, y = line.split(split_token)
+                x_data.append(float(x))
+                y_data.append(float(y))
+            return x_data, y_data
+   \end{minted}
+   On utilise des expressions régulières pour s'assurer qu'on ne prend que les données qui nous intéressent, et on sépare les données en deux tableaux, un tableau contenant la variable de temps, et un autre contenant la varaible de position selon l'axe Ox.
+   Ensuite, on modélise $x(t)$ en définissant un modèle qui sera la fonction \texttt{function} dans notre programme. 
+   On affiche les paramètres.
+   \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        from scipy.optimize import curve_fit
+        import numpy as np 
+        from utils import exctract_data
+        import matplotlib.pyplot as plt 
+
+
+        path_data_libre = "/Users/mac/documents/prepa/rabelais/physique/TPs/tp-pc-22/data-libre/data-y.txt"
+        path_data_force = "/Users/mac/documents/prepa/rabelais/physique/TPs/tp-pc-22/data-force/data-y.txt"
+
+
+        def function(x, a, b, c, d, e):
+            return a*np.exp(-b*x)*np.cos(c*x+d)+e
+
+
+        if __name__ == "__main__":
+            """
+            Cas libre
+            """
+            file = open(path_data_libre, 'r')
+            x_data, y_data = exctract_data(file)
+            xdata, ydata = np.array(x_data), np.array(y_data)
+            popt, pcov = curve_fit(function, xdata, ydata)
+            print(popt)
+    \end{minted}
+    \newpage 
+    On lit en console :
+    \begin{center}
+        \begin{tabular}{ c  c  c  c  c }
+            \texttt{2.52510489} & \texttt{0.02635128} & \texttt{9.93313974} & \texttt{-1.09272005} & \texttt{-0.0617848} \\
+            $A$ & $\lambda$ & $\omega$ & $\phi$ & $x_{eq}$
+        \end{tabular}
+    \end{center}
+    On a \(\omega=\sqrt{\omega_0^2-\lambda^2}\Longleftrightarrow \omega_0^2=\omega^2+\lambda^2\). Or, \(\omega_0^2=\frac{k}{m}\Longleftrightarrow k=m\omega^2\).
+    L'application numérique donne : $k\simeq 6.6$ N/m.
+
+    \subsubsection*{Étude du décrément logarithmique}
+    \begin{enumerate}
+        \item On montre que $\displaystyle \delta = \ln\left(\frac{x(t)}{x(t+T)}\right)$. 
+        On commence par remarquer que 
+        \begin{align*}
+            \frac{x(t)}{x(t+T)} & = \frac{A\exp(-\lambda t)\cos(\omega t+\phi)+x_{eq}}{A\exp(-\lambda (t+T)\cos(\omega (t+T)+\phi)+x_{eq}}\\
+                                & = \frac{A\exp(-\lambda t)\cos(\omega t+\phi)+x_{eq}}{A\exp(-\lambda t)\exp(-\lambda T)\cos(\omega t+\phi)+x_{eq}}
+        \end{align*}
+        Or, $x_{eq}$ est négligeable devant le reste, ainsi $\displaystyle \frac{x(t)}{x(t+T)}=\exp(\lambda T)$. 
+        Donc $\delta=\lambda T$; le même calcul nous permet d'en déduire $\displaystyle \frac{x(t)}{x(t+nT)}=\exp(\lambda nT)$, d'où
+        \begin{align*}
+            \ln\left(\frac{x(t)}{x(t+nT)}\right)=\lambda nT=n\delta\Longleftrightarrow \boxed{\delta=\frac{1}{n}\ln\left(\frac{x(t)}{x(t+nT)}\right)}
+        \end{align*}
+        \item En utilisant notre programme, on peut mesurer $\delta$ sur 39 périodes, par exemple. 
+        On modifie une partie de ce dernier pour avoir ceci : 
+        \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+            if __name__ == "__main__":
+                """
+                Décrément logarithmique
+                """
+                file = open(path_data_libre, 'r')
+                x_data, y_data = exctract_data(file)
+                xdata, ydata = np.array(x_data), np.array(y_data)
+                popt, pcov = curve_fit(function, xdata, ydata)
+                n = 40
+                t1, t2 = 0.63254776149755, n*0.63254776149755
+                y1, y2 = function(t1, *popt), function(t2, *popt)
+                delta = np.log(y1/y2)*(1/n)
+                print(delta)
+        \end{minted}
+        On lit alors en console :
+        \begin{center}
+            \texttt{0.017595933694887392}
+        \end{center}
+        \item On en déduit la valeur de $\lambda$, en effet on a \(\delta = \lambda T\Longleftrightarrow \lambda=\frac{\delta}{T}\).
+        Donc après application numérique $\lambda\simeq 0.027$.
+    \end{enumerate}
+
+    \subsubsection*{Étude de la vitesse v}
+    On modifie la dernière partie de notre programme : 
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        if __name__ == "__main__":
+            """
+            Vitesse
+            """
+            file = open(path_data_libre, 'r')
+            x_data, y_data = exctract_data(file)
+            xdata, ydata = np.array(x_data), np.array(y_data)
+            popt, pcov = curve_fit(function, xdata, ydata)
+            plt.plot(xdata, function(xdata, *popt), 'r-', label='x(t)')
+            plt.plot(xdata, fp(xdata, *popt), 'b-', label='v(t)')
+            plt.show()
+    \end{minted}
+    Et on l'exécute : 
+
+    \begin{multicols}{2}
+        \begin{tabular}{ c }
+            \color{white}c\\
+            \color{white}c\\
+            \color{white}c
+        \end{tabular}\\
+        \quad On mesure le retard entre $x(t)$ et $v(t)$, on trouve qu'il est de l'ordre de -164 ms. On le note $t_r$.
+        On rappelle que la formule liant déphasage et retard  : \(\boxed{\Delta\varphi=2\pi t_r}\).
+        L'application numérique donne : $\Delta\varphi=\frac{-\pi}{3}$. 
+        (La mesure a été faite manuellement, directement sur la fenêtre de visualisation de la figure; elle aurait pu être automatisée, mais cela aurait constitué une perte de temps étant donnée 
+        la simplicité de la tache.)
+        \columnbreak
+        \begin{center}
+            \includegraphics[scale=0.5]{src/xv.png}\\
+            \textsc{Figure 2} – Les courbes de position et de vitesse en fonction du temps.
+        \end{center}
+    \end{multicols}
+
+    \subsubsection*{Étude énergétique}
+    On sait que l'expression de l'énergie cinétique est $E_c=\frac{1}{2}mv^2$. 
+    On possède le tableau des valeurs de la vitesse en fonction du temps, ainsi que celui de la position en fonction du temps.
+    Ainsi, comme la seule énergie potentielle considérée est celle élastique, on a $E_p=\frac{1}{2}kx$. On modifie la fin de notre programme :
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        def function(x, a, b, c, d, e):
+            return a*np.exp(-b*x)*np.cos(c*x+d)+e
+
+        def fp(x, a, b, c, d, e):
+            return -a*np.exp(-b*x)*(b*np.cos(c*x+d)+c*np.sin(c*x+d))
+
+        def ep(x, a, b, c, d, e):
+            return 1/2*6.6*(function(x, a, b, c, d, e)**2)
+
+        def ec(x, a, b, c, d, e):
+            return 1/2*0.0666*(fp(x, a, b, c, d, e)**2)
+
+        if __name__ == "__main__":
+            """
+            Énergies cinétique, potentielle et mécanique
+            """
+            file = open(path_data_libre, 'r')
+            x_data, y_data = exctract_data(file)
+            xdata, ydata = np.array(x_data), np.array(y_data)
+            popt, pcov = curve_fit(function, xdata, ydata)
+            Ec = ec(xdata, *popt)
+            Ep = ep(xdata, *popt)
+            Em = Ec + Ep
+            plt.figure(figsize=(20, 6), dpi=80)
+            plt.plot(xdata, Ec, 'r-', label='Énergie cinétique')
+            plt.plot(xdata, Ep, 'b-', label='Énergie potentielle')
+            plt.plot(xdata, Em, 'g-', label='Énergie mécanique')
+            plt.legend()
+            plt.xlabel('Énergie (J)')
+            plt.ylabel('temps (s)')
+            plt.show()
+            \end{minted}
+    On a, après exécution du programme :
+    \begin{center}
+        \includegraphics[scale=0.5]{src/es.png}\\
+        \textsc{Figure 3} – Tracé des courbes énergétiques.
+    \end{center}
+
+    \subsubsection*{Portrait de phase}
+    On dispose des tableaux de la position et de la vitesse en fonction du temps. Il suffit de représenter le second en fonction du premier :
+
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        if __name__ == "__main__":
+            """
+            Portait de phase
+            """
+            file = open(path_data_libre, 'r')
+            x_data, y_data = exctract_data(file)
+            xdata, ydata = np.array(x_data), np.array(y_data)
+            popt, pcov = curve_fit(function, xdata, ydata)
+            plt.figure(figsize=(10, 6), dpi=80)
+            plt.plot(ydata, fp(xdata, *popt), 'r-')
+            plt.ylabel('Vitesse (m/s)')
+            plt.xlabel('Position (m)')
+            plt.show()
+    \end{minted}
+    \begin{center}
+        \includegraphics[scale=0.5]{src/phase.png}\\
+        \textsc{Figure 4} – Portrait de phase.
+    \end{center}
+
+    \begin{center}
+		\textbf{\Large Oscillations forcés}
+	\end{center}
+
+    L'expérience précédente est répétée, mais à quelques détails près. En effet, le ressort horizontal a une extrémité qui est excitée de façon sinusoïdale. 
+    On recommence la même étude que tout à l'heure, en commençant par une étude théorique.
+
+    \subsubsection*{Étude théorique}
+    Le bilan des forces diffère du premier cas en un seul point : la force d'excitation $\vv{F_e}$. Étant donné qu'elle agit de manière sinusoïdale, on a 
+    \[\vv{F_e}=F_m\cos(\Omega t)\vv{e_x}\]
+
+
+    L'application du \textbf{PFD} donne : \[m\vv{a}=\vv{P}+\vv{R}+\vv{f_{\text{air}}}+\vv{F}+\vv{F_e}\]
+    Ainsi, en projetant, on obtient la relation :
+    \begin{align*}
+        & m\ddot{x}=-k(x-\ell_0)-\alpha\dot{x}+F_m\cos(\Omega t)\\
+        \Longleftrightarrow & \boxed{\ddot{x}+\frac{\alpha}{m}\dot{x}+\frac{k}{m}x=\frac{k\ell_0+F_m\cos(\Omega t)}{m}}
+    \end{align*}
+    La solution de l'équation différentielle est une somme d'une solution homogène et d'une solution particulière. Dans notre cas, on remarquera que la solution 
+    homogène devient négligeable devant la solution particulière lorsque le régime est permanent. Or, en passant aux complexes, on trouve une solution particulière de la forme :
+    \[x_p(t)=x_{pmax}\cos(\Omega t+\phi_p)\]
+    \newpage
+    \subsubsection*{Étude expérimentale}
+    On lance alors le programme suivant :
+    \begin{minted}[linenos=true, bgcolor=lightgray, tabsize=4, gobble=8, fontfamily=courier, fontsize=\small, xleftmargin=5pt, xrightmargin=5pt]{python}
+        from scipy.optimize import curve_fit
+        import numpy as np 
+        from utils import exctract_data
+        import matplotlib.pyplot as plt 
+
+
+        path_data_libre = "/Users/mac/documents/prepa/rabelais/physique/TPs/tp-pc-22/data-libre/data-y.txt"
+        path_data_force = "/Users/mac/documents/prepa/rabelais/physique/TPs/tp-pc-22/data-force/data-y.txt"
+
+
+        def function(x, a, b, c):
+            return a*np.cos(b*x+c)
+
+
+        def fp(x, a, b, c):
+            return -a*b*np.sin(b*x+c)
+
+
+        def ep(x, a, b, c):
+            return 1/2*6.6*(function(x, a, b, c)**2)
+
+
+        def ec(x, a, b, c):
+            return 1/2*0.0666*(fp(x, a, b, c)**2)
+
+
+        if __name__ == "__main__":
+            """
+            Cas régime forcé
+            """
+            file = open(path_data_force, 'r')
+            x_data, y_data = exctract_data(file)
+            xdata, ydata = np.array(x_data), np.array(y_data)
+            popt, pcov = curve_fit(function, xdata, ydata)
+            Ec = ec(xdata, *popt)
+            Ep = ep(xdata, *popt)
+            Em = Ep+Ec
+            fig = plt.figure(1, figsize=(10, 6), dpi=80)
+            ax1 = fig.add_subplot(211)
+            ax1.plot(Ec, 'r-', label='Énergie cinétique')
+            ax1.plot(Ep, 'b-', label='Énergie potentielle')
+            ax1.plot(Em, 'g', label='Énergie mécanique')
+            plt.legend()
+            plt.xlabel('temps (s)')
+            plt.ylabel('Énergie (J)')
+            ax2 = fig.add_subplot(212)
+            ax2.plot(function(xdata, *popt), fp(xdata, *popt), '-b', label='Portrait de phase')
+            plt.xlabel('Position (m)')
+            plt.ylabel('Vitesse (m/s)')
+            plt.legend()
+            plt.show()
+    \end{minted}
+    \begin{center}
+        \includegraphics[scale=0.5]{src/final.png}\\
+        \textsc{Figure 5} – Dernière figure !
+    \end{center}
+\end{document}
