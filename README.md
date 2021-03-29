@@ -9,4 +9,4 @@ $ python3 main.py
 Des options pour le lancement de ce dernier seront à préciser (travail à faire).
 
 ## Template LaTeX
-Travail à faire lol.
+Le fichier LaTeX ayant servi au rendu du document PDF final est disponible dans le dossier `tex`
